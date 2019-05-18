@@ -3,12 +3,20 @@ package ampel;
 public class Ampel extends Verkehr {
 	boolean gruen;
 
-	public Ampel(final int x, final int y, boolean gruen) {
+	public Ampel(final int x, final int y) {
 		super(x, y);
-		this.gruen = gruen;
+
 
 	}
-
+	public boolean isGruen() {
+		if (gruen) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		if (gruen = true) {
