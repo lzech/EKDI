@@ -24,18 +24,16 @@ public class Kreuzung {
 			System.out.println("t= " + map.getClk());
 			System.out.println(map);
 			if (map.getClk() <= 240) {
-				if (waitForSpace()) {
-					map.setClk();
-				}
-				
+				waitForSpace();
+				map.setClk();
 			}
-		}
 
+		}
 	}
 
-	private boolean waitForSpace() {
+	private void waitForSpace() {
 		if (IsKeyPressed.isSpacePressed()) {
-			return true;
+			return;
 		}
 
 	}
@@ -43,16 +41,16 @@ public class Kreuzung {
 	private void verkehrsfluss() {
 		for (int i = 0; i < 10; i++) {
 			if (map.getAmpeln()[i].isGruen()) {
-				switch(i) {
+				switch (i) {
 				case 1:
-					
-				case 2:
-				
-				case 3:	
-				}
-				
-			}
-	}
-	
 
+				case 2:
+
+				case 3:
+				}
+
+			}
+		}
+
+	}
 }
