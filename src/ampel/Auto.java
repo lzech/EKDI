@@ -1,7 +1,7 @@
 package ampel;
 
 public class Auto extends Verkehr {
-	public Auto(final int x, final int y) {
+	public Auto(int x, int y) {
 		super(x, y);
 	}
 

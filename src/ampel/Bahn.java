@@ -2,7 +2,7 @@ package ampel;
 
 public class Bahn extends Verkehr {
 
-	public Bahn(final int x, final int y) {
+	public Bahn( int x,  int y) {
 		super(x, y);
 	}
 
