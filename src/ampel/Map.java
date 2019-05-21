@@ -266,20 +266,5 @@ public class Map {
 		return ret;
 	}
 
-	private String getMapObject(int j, int k) {
-		if (auto.getX() == k && auto.getY() == j) {
-			return auto.toString();
-		} else if (bahn.getX() == k && bahn.getY() == j) {
-			return bahn.toString();
-		} else if (passant.getX() == k && passant.getY() == j) {
-			return passant.toString();
-		}
-		for (Ampel ampel : ampeln) {
-			if (ampel.getY() == j && ampel.getX() == k) {
-				return ampel.toString();
-			}
-		}
-		return " ";
-	}
 
 }

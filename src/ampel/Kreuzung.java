@@ -3,6 +3,8 @@ package ampel;
 public class Kreuzung {
 	private Map map;
 	private static Kreuzung instance;
+	
+	//ToDo: Verkehrsfluss, Kollisionsabfrage
 
 	public Kreuzung() {
 		map = new Map();
@@ -26,6 +28,7 @@ public class Kreuzung {
 			if (map.getClk() <= 240) {
 				waitForSpace();
 				map.setClk();
+				verkehrsfluss();
 			}
 
 		}
