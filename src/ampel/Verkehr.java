@@ -1,8 +1,8 @@
 package ampel;
 
 public abstract class Verkehr {
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 
 	public Verkehr(int x, int y) {
 		this.x = x;
@@ -17,5 +17,7 @@ public abstract class Verkehr {
 	public int getY() {
 		return y;
 	}
+	
+	
 
 }

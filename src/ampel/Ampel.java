@@ -16,6 +16,13 @@ public class Ampel extends Verkehr {
 			return false;
 		}
 	}
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
 	
 	@Override
 	public String toString() {
