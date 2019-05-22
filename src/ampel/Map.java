@@ -474,7 +474,11 @@ public class Map {
 		String ret = "";
 		for (int i = 0; i < karte.length; i++) {
 			for (int j = 0; j < karte[i].length; j++) {
-				if (((i < 5 || i > 14) && (j == 4 || j == 5 || j == 14 || j == 15))) {
+				if (karte[i][j][0] != null) {
+					ret += karte[i][j][0];
+				} else if (karte[i][j][1] != null) {
+					ret += karte[i][j][1];
+				} else if (((i < 5 || i > 14) && (j == 4 || j == 5 || j == 14 || j == 15))) {
 					ret += "|";
 				} else if (((i > 4 && i < 15) && (j == i - 1 || j == i))) {
 					ret += "\\";
@@ -492,11 +496,7 @@ public class Map {
 					ret += ".";
 				}
 
-				else if (karte[i][j][0] != null) {
-					ret += karte[i][j][0];
-				} else if (karte[i][j][1] != null) {
-					ret += karte[i][j][1];
-				} else {
+				else {
 					ret += " ";
 				}
 
@@ -506,4 +506,47 @@ public class Map {
 		return ret;
 	}
 
+	public void schalteAmpel() {
+		int a1 = 20;
+		int a2 = 20;
+		int a3 = 20;
+		int a4 = 20;
+		int a5 = 20;
+		int c1 = 15;
+		if ((clk <= c1) || (clk > (c1 * 4) && clk <= (c1 * 5)
+				|| (clk > (c1 * 8) && clk <= (c1 * 9) || (clk > (c1 * 12) && clk <= (c1 * 13))))) {
+			a1 = 0;
+			a2 = 3;
+			a3 = 4;
+			a4 = 6;
+			a5 = 8;
+		} else if ((clk >= c1 + 1) && clk <= (c1 * 2) || (clk >= (c1 * 5 + 1) && clk <= (c1 * 6)
+				|| (clk >= (c1 * 9 + 1) && clk <= (c1 * 10) || (clk >= (c1 * 13 + 1) && clk <= (c1 * 14))))) {
+			a1 = 1;
+			a2 = 2;
+			a3 = 4;
+			a4 = 7;
+		} else if ((clk >= (c1 * 2 + 1) && clk <= (c1 * 3) || (clk >= (c1 * 6 + 1) && clk <= (c1 * 7)
+				|| (clk >= (c1 * 10 + 1) && clk <= (c1 * 11) || (clk >= (c1 * 14 + 1)) && clk <= (c1 * 15))))) {
+			a1 = 2;
+			a2 = 5;
+			a3 = 7;
+		} else if ((clk > (c1 * 3) && clk <= (c1 * 4) || (clk > (c1 * 7) && clk <= (c1 * 8)
+				|| (clk > (c1 * 11) && clk <= (c1 * 12) || (clk > (c1 * 15) && clk <= (c1 * 16)))))) {
+
+		}
+		for (int i = 0; i<9; i++) {
+			if (i == a1 || i == a2 || i == a3 || i == a4 || i == a5) {
+				ampeln[i][0].setGruen(true);
+				ampeln[i][1].setGruen(true);
+			}
+			else {
+				ampeln[i][0].setGruen(false);
+				ampeln[i][1].setGruen(false);
+			}
+			
+				
+				
+		}
+	}
 }

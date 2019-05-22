@@ -16,6 +16,9 @@ public class Ampel extends Verkehr {
 			return false;
 		}
 	}
+	public void setGruen(boolean b) {
+		this.gruen = b;
+	}
 	public int getX() {
 		return x;
 	}

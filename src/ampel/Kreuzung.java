@@ -24,22 +24,22 @@ public class Kreuzung {
 	}
 
 	private void play() {
-		while (map.getClk() <= 240) {
-			try {
-				TimeUnit.SECONDS.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		for (int b = 1; b<20;b++) {
+			map.createVerkehr();
+		}
+		while (map.getClk() < 240) {
+			/*
+			 * try { TimeUnit.SECONDS.sleep(10); } catch (InterruptedException e) { // TODO
+			 * Auto-generated catch block e.printStackTrace(); }
+			 */
 			map.setClk();
 			map.createVerkehr();
 			verkehrsfluss();
+			map.schalteAmpel();
 			System.out.println("t= " + map.getClk());
 			System.out.println(map);
-			}
 		}
-	
-
+	}
 
 	private void verkehrsfluss() {
 		String s = "";
@@ -51,89 +51,99 @@ public class Kreuzung {
 					case 0:
 						s = "wo";
 						s1 = "ow";
-						while (map.getAmpeln()[2][6].isGruen()) {
-							for (int k = 0; k < map.getPassanten(s).length; k++) {
-								if (map.getPassanten(s)[k + 1] == null) {
-									map.getPassanten(s)[k].movePassant(s);
-								}
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 2 && map.getAmpeln()[d][0].getY() == 6)
+									|| (map.getAmpeln()[d][1].getX() == 2 && map.getAmpeln()[d][1].getY() == 6)) {
+								for (int k = 0; k < map.getPassanten(s).length; k++) {
+									if (map.getPassanten(s)[k] != null) {
+										map.getPassanten(s)[k].movePassant(s);
+									}
 
-							}
-							for (int k = 0; k < map.getPassanten(s1).length; k++) {
-								if (map.getPassanten(s1)[k + 1] == null) {
-									map.getPassanten(s1)[k].movePassant(s1);
+								}
+								for (int k = 0; k < map.getPassanten(s1).length; k++) {
+									if (map.getPassanten(s1)[k] != null) {
+										map.getPassanten(s1)[k].movePassant(s1);
+									}
 								}
 							}
-
 						}
 
 					case 1:
 						s = "ns";
 						s1 = "sn";
-						while (map.getAmpeln()[2][3].isGruen()) {
-							for (int k = 0; k < map.getAutos(s).length; k++) {
-								if (map.getAutos(s)[k + 1] == null) {
-									map.getAutos(s)[k].moveAuto(s);
-								}
-
-							}
-							for (int k = 0; k < map.getAutos(s1).length; k++) {
-								if (map.getAutos(s1)[k + 1] == null) {
-									map.getAutos(s1)[k].moveAuto(s1);
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 3 && map.getAmpeln()[d][0].getY() == 2)
+									|| (map.getAmpeln()[d][1].getX() == 3 && map.getAmpeln()[d][1].getY() == 2)) {
+								for (int k = 0; k < map.getAutos(s).length; k++) {
+									if (map.getAutos(s)[k] != null) {
+										map.getAutos(s)[k].moveAuto(s);
+									}
 
 								}
-							}
+								for (int k = 0; k < map.getAutos(s1).length; k++) {
+									if (map.getAutos(s1)[k] != null) {
+										map.getAutos(s1)[k].moveAuto(s1);
 
+									}
+								}
+							}
 						}
 					case 2:
 						s = "wo";
 						s1 = "ow";
-						while (map.getAmpeln()[2][13].isGruen()) {
-							for (int k = 0; k < map.getPassanten(s).length; k++) {
-								if (map.getPassanten(s)[k + 1] == null) {
-									map.getPassanten(s)[k].movePassant(s);
-								}
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 13 && map.getAmpeln()[d][0].getY() == 2)
+									|| (map.getAmpeln()[d][1].getX() == 13 && map.getAmpeln()[d][1].getY() == 2)) {
+								for (int k = 0; k < map.getPassanten(s).length; k++) {
+									if (map.getPassanten(s)[k] != null) {
+										map.getPassanten(s)[k].movePassant(s);
+									}
 
-							}
-							for (int k = 0; k < map.getPassanten(s1).length; k++) {
-								if (map.getPassanten(s1)[k + 1] == null) {
-									map.getPassanten(s1)[k].movePassant(s1);
+								}
+								for (int k = 0; k < map.getPassanten(s1).length; k++) {
+									if (map.getPassanten(s1)[k] != null) {
+										map.getPassanten(s1)[k].movePassant(s1);
+									}
 								}
 							}
-
 						}
-
 					case 3:
 						s = "ns";
 						s1 = "sn";
-						while (map.getAmpeln()[2][16].isGruen()) {
-							for (int k = 0; k < map.getBahnen(s).length; k++) {
-								if (map.getBahnen(s)[k+1] == null) {
-									map.getBahnen(s)[k].moveBahn(s);
-								}
-								
-							}
-							for (int k = 0; k < map.getAutos(s1).length; k++) {
-								if (map.getBahnen(s1)[k+1] == null) {
-									map.getBahnen(s1)[k].moveBahn(s1);
-								}
-								
-							}
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 16 && map.getAmpeln()[d][0].getY() == 2)
+									|| (map.getAmpeln()[d][1].getX() == 16 && map.getAmpeln()[d][1].getY() == 2)) {
+								for (int k = 0; k < map.getBahnen(s).length; k++) {
+									if (map.getBahnen(s)[k] != null) {
+										map.getBahnen(s)[k].moveBahn(s);
+									}
 
+								}
+								for (int k = 0; k < map.getAutos(s1).length; k++) {
+									if (map.getBahnen(s1)[k] != null) {
+										map.getBahnen(s1)[k].moveBahn(s1);
+									}
+
+								}
+							}
 						}
 
 					case 4:
 						s = "ns";
 						s1 = "sn";
-						while (map.getAmpeln()[11][19].isGruen()) {
-							for (int k = 0; k < map.getPassanten(s).length; k++) {
-								if (map.getPassanten(s)[k + 1] == null) {
-									map.getPassanten(s)[k].movePassant(s);
-								}
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 19 && map.getAmpeln()[d][0].getY() == 19)
+									|| (map.getAmpeln()[d][1].getX() == 11 && map.getAmpeln()[d][1].getY() == 11)) {
+								for (int k = 0; k < map.getPassanten(s).length; k++) {
+									if (map.getPassanten(s)[k] != null) {
+										map.getPassanten(s)[k].movePassant(s);
+									}
 
-							}
-							for (int k = 0; k < map.getPassanten(s1).length; k++) {
-								if (map.getPassanten(s1)[k + 1] == null) {
-									map.getPassanten(s1)[k].movePassant(s1);
+								}
+								for (int k = 0; k < map.getPassanten(s1).length; k++) {
+									if (map.getPassanten(s1)[k] != null) {
+										map.getPassanten(s1)[k].movePassant(s1);
+									}
 								}
 							}
 						}
@@ -141,74 +151,87 @@ public class Kreuzung {
 					case 5:
 						s = "wo";
 						s1 = "ow";
-						while (map.getAmpeln()[11][5].isGruen()) {
-							for (int k = 0; k < map.getAutos(s).length; k++) {
-								if (map.getAutos(s)[k + 1] == null) {
-									map.getAutos(s)[k].moveAuto(s);
-								}
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 5 && map.getAmpeln()[d][0].getY() == 11)
+									|| (map.getAmpeln()[d][1].getX() == 5 && map.getAmpeln()[d][1].getY() == 11)) {
 
-							}
-							for (int k = 0; k < map.getAutos(s1).length; k++) {
-								if (map.getAutos(s1)[k + 1] == null) {
-									map.getAutos(s1)[k].moveAuto(s1);
+								for (int k = 0; k < map.getAutos(s).length; k++) {
+									if (map.getAutos(s)[k] != null) {
+										map.getAutos(s)[k].moveAuto(s);
+									}
 
 								}
-							}
+								for (int k = 0; k < map.getAutos(s1).length; k++) {
+									if (map.getAutos(s1)[k] != null) {
+										map.getAutos(s1)[k].moveAuto(s1);
 
+									}
+								}
+							}
 						}
 
 					case 6:
 						s = "wo";
 						s1 = "ow";
-						while (map.getAmpeln()[14][16].isGruen()) {
-							for (int k = 0; k < map.getPassanten(s).length; k++) {
-								if (map.getPassanten(s)[k + 1] == null) {
-									map.getPassanten(s)[k].movePassant(s);
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 16 && map.getAmpeln()[d][0].getY() == 14)
+									|| (map.getAmpeln()[d][1].getX() == 16 && map.getAmpeln()[d][1].getY() == 14)) {
+								for (int k = 0; k < map.getPassanten(s).length; k++) {
+									if (map.getPassanten(s)[k] != null) {
+										map.getPassanten(s)[k].movePassant(s);
+									}
+
+								}
+								for (int k = 0; k < map.getPassanten(s1).length; k++) {
+									if (map.getPassanten(s1)[k] != null) {
+										map.getPassanten(s1)[k].movePassant(s1);
+									}
 								}
 
 							}
-							for (int k = 0; k < map.getPassanten(s1).length; k++) {
-								if (map.getPassanten(s1)[k + 1] == null) {
-									map.getPassanten(s1)[k].movePassant(s1);
-								}
-							}
-
 						}
 
 					case 7:
 						s = "ns";
 						s1 = "sn";
-						while (map.getAmpeln()[11][3].isGruen()) {
-							for (int k = 0; k < map.getPassanten(s).length; k++) {
-								if (map.getPassanten(s)[k + 1] == null) {
-									map.getPassanten(s)[k].movePassant(s);
-								}
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 3 && map.getAmpeln()[d][0].getY() == 11)
+									|| (map.getAmpeln()[d][1].getX() == 3 && map.getAmpeln()[d][1].getY() == 11)) {
 
-							}
-							for (int k = 0; k < map.getPassanten(s1).length; k++) {
-								if (map.getPassanten(s1)[k + 1] == null) {
-									map.getPassanten(s1)[k].movePassant(s1);
+								for (int k = 0; k < map.getPassanten(s).length; k++) {
+									if (map.getPassanten(s)[k] != null) {
+										map.getPassanten(s)[k].movePassant(s);
+									}
+
+								}
+								for (int k = 0; k < map.getPassanten(s1).length; k++) {
+									if (map.getPassanten(s1)[k] != null) {
+										map.getPassanten(s1)[k].movePassant(s1);
+									}
 								}
 							}
-
 						}
 
 					case 8:
 						s = "wo";
 						s1 = "ow";
-						while (map.getAmpeln()[14][3].isGruen()) {
-							for (int k = 0; k < map.getPassanten(s).length; k++) {
-								if (map.getPassanten(s)[k + 1] == null) {
-									map.getPassanten(s)[k].movePassant(s);
+
+						for (int d = 0; d < 9; d++) {
+							if ((map.getAmpeln()[d][0].getX() == 3 && map.getAmpeln()[d][0].getY() == 14)
+									|| (map.getAmpeln()[d][1].getX() == 3 && map.getAmpeln()[d][1].getY() == 14)) {
+								for (int k = 0; k < map.getPassanten(s).length; k++) {
+									if (map.getPassanten(s)[k] != null) {
+										map.getPassanten(s)[k].movePassant(s);
+									}
+
+								}
+								for (int k = 0; k < map.getPassanten(s1).length; k++) {
+									if (map.getPassanten(s1)[k] != null) {
+										map.getPassanten(s1)[k].movePassant(s1);
+									}
 								}
 
 							}
-							for (int k = 0; k < map.getPassanten(s1).length; k++) {
-								if (map.getPassanten(s1)[k + 1] == null) {
-									map.getPassanten(s1)[k].movePassant(s1);
-								}
-							}
-
 						}
 
 					}
