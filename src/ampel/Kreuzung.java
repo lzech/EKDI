@@ -1,5 +1,7 @@
 package ampel;
 
+import java.util.concurrent.TimeUnit;
+
 public class Kreuzung {
 	private Map map;
 	private static Kreuzung instance;
@@ -23,27 +25,26 @@ public class Kreuzung {
 
 	private void play() {
 		while (map.getClk() <= 240) {
-			waitForSpace();
+			try {
+				TimeUnit.SECONDS.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			map.setClk();
 			map.createVerkehr();
 			verkehrsfluss();
 			System.out.println("t= " + map.getClk());
 			System.out.println(map);
-
+			}
 		}
-	}
+	
 
-	private void waitForSpace() {
-		if (IsKeyPressed.isSpacePressed()) {
-			return;
-		}
-
-	}
 
 	private void verkehrsfluss() {
 		String s = "";
 		String s1 = "";
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 2; j++) {
 				if (map.getAmpeln()[i][j].isGruen()) {
 					switch (i) {

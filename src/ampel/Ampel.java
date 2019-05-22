@@ -26,7 +26,7 @@ public class Ampel extends Verkehr {
 	
 	@Override
 	public String toString() {
-		if (gruen = true) {
+		if (gruen) {
 			return "G";
 		} else {
 			return "R";
