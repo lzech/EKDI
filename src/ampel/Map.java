@@ -6,7 +6,7 @@ public class Map {
 	public static Verkehr[][][] karte;
 	private int x;
 	private int y;
-	private Ampel[][] ampeln;
+	private Ampel[] ampeln;
 	private Auto[] autosns;
 	private Auto[] autossn;
 	private Auto[] autoswo;
@@ -27,7 +27,7 @@ public class Map {
 	public Map() {
 		karte = new Verkehr[20][20][100];
 		clk = 0;
-		ampeln = new Ampel[9][2];
+		ampeln = new Ampel[18];
 		autosns = new Auto[1];
 		autossn = new Auto[1];
 		autoswo = new Auto[1];
@@ -163,7 +163,7 @@ public class Map {
 
 	}
 
-	public Ampel[][] getAmpeln() {
+	public Ampel[] getAmpeln() {
 		return ampeln;
 	}
 
@@ -410,6 +410,8 @@ public class Map {
 
 	private void createAmpeln() {
 		int[][] arr = new int[20][2];
+		int id = 0;
+		int z = 1;
 		arr[0][0] = 2;
 		arr[0][1] = 6;
 		arr[1][0] = 5;
@@ -455,14 +457,21 @@ public class Map {
 		arr[17][0] = 11;
 		arr[17][1] = 3;
 
-		for (int i = 0, a = 0; i < ampeln.length; i++) {
-			for (int j = 0; j < 2; j++, a++) {
-				y = arr[a][0];
-				x = arr[a][1];
-				Ampel ampel = new Ampel(x, y);
-				karte[y][x][0] = ampel;
-				this.ampeln[i][j] = ampel;
+		for (int i = 0, a = 0; i < 18; i++, z++) {
 
+			y = arr[a][0];
+			x = arr[a][1];
+			a++;
+			Ampel ampel = new Ampel(x, y, id);
+			this.ampeln[i] = ampel;
+			if (z % 2 == 0) {
+				if (id < 6) {
+					id++;
+
+				} else {
+					id += 2;
+
+				}
 			}
 
 		}
@@ -519,34 +528,30 @@ public class Map {
 			a2 = 3;
 			a3 = 4;
 			a4 = 6;
-			a5 = 8;
+			a5 = 10;
 		} else if ((clk >= c1 + 1) && clk <= (c1 * 2) || (clk >= (c1 * 5 + 1) && clk <= (c1 * 6)
 				|| (clk >= (c1 * 9 + 1) && clk <= (c1 * 10) || (clk >= (c1 * 13 + 1) && clk <= (c1 * 14))))) {
 			a1 = 1;
 			a2 = 2;
 			a3 = 4;
-			a4 = 7;
+			a4 = 8;
 		} else if ((clk >= (c1 * 2 + 1) && clk <= (c1 * 3) || (clk >= (c1 * 6 + 1) && clk <= (c1 * 7)
 				|| (clk >= (c1 * 10 + 1) && clk <= (c1 * 11) || (clk >= (c1 * 14 + 1)) && clk <= (c1 * 15))))) {
 			a1 = 2;
 			a2 = 5;
-			a3 = 7;
+			a3 = 8;
 		} else if ((clk > (c1 * 3) && clk <= (c1 * 4) || (clk > (c1 * 7) && clk <= (c1 * 8)
 				|| (clk > (c1 * 11) && clk <= (c1 * 12) || (clk > (c1 * 15) && clk <= (c1 * 16)))))) {
 
 		}
-		for (int i = 0; i<9; i++) {
-			if (i == a1 || i == a2 || i == a3 || i == a4 || i == a5) {
-				ampeln[i][0].setGruen(true);
-				ampeln[i][1].setGruen(true);
+		for (int i = 0; i < 17; i++) {
+			if (ampeln[i].getId() == a1 || ampeln[i].getId() == a2 || ampeln[i].getId() == a3 || ampeln[i].getId() == a4
+					|| ampeln[i].getId() == a5) {
+				ampeln[i].setGruen(true);
+			} else {
+				ampeln[i].setGruen(false);
 			}
-			else {
-				ampeln[i][0].setGruen(false);
-				ampeln[i][1].setGruen(false);
-			}
-			
-				
-				
+
 		}
 	}
 }

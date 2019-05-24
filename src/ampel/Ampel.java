@@ -1,10 +1,14 @@
 package ampel;
 
-public class Ampel extends Verkehr {
+public class Ampel {
 	boolean gruen;
-
-	public Ampel(final int x, final int y) {
-		super(x, y);
+	int id;
+	private int x;
+	private int y;
+	public Ampel(final int x, final int y, final int id) {
+		this.x = x;
+		this.y = y;
+		this.id = id;
 
 
 	}
@@ -25,6 +29,12 @@ public class Ampel extends Verkehr {
 
 	public int getY() {
 		return y;
+	}
+	public void setId(int s) {
+		this.id = s;
+	}
+	public int getId() {
+		return this.id;
 	}
 	
 	@Override

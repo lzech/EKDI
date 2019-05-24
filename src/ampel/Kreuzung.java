@@ -34,7 +34,7 @@ public class Kreuzung {
 			 */
 			map.setClk();
 			map.createVerkehr();
-			verkehrsfluss();
+			//verkehrsfluss();
 			map.schalteAmpel();
 			System.out.println("t= " + map.getClk());
 			System.out.println(map);
@@ -46,14 +46,14 @@ public class Kreuzung {
 		String s1 = "";
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 2; j++) {
-				if (map.getAmpeln()[i][j].isGruen()) {
+				if (map.getAmpeln()[i].isGruen()) {
 					switch (i) {
 					case 0:
 						s = "wo";
 						s1 = "ow";
-						for (int d = 0; d < 9; d++) {
-							if ((map.getAmpeln()[d][0].getX() == 2 && map.getAmpeln()[d][0].getY() == 6)
-									|| (map.getAmpeln()[d][1].getX() == 2 && map.getAmpeln()[d][1].getY() == 6)) {
+						for (int d = 0; d < 18; d++) {
+							if ((map.getAmpeln()[d].getX() == 2 && map.getAmpeln()[d].getY() == 6)
+									 {
 								for (int k = 0; k < map.getPassanten(s).length; k++) {
 									if (map.getPassanten(s)[k] != null) {
 										map.getPassanten(s)[k].movePassant(s);
@@ -72,8 +72,8 @@ public class Kreuzung {
 						s = "ns";
 						s1 = "sn";
 						for (int d = 0; d < 9; d++) {
-							if ((map.getAmpeln()[d][0].getX() == 3 && map.getAmpeln()[d][0].getY() == 2)
-									|| (map.getAmpeln()[d][1].getX() == 3 && map.getAmpeln()[d][1].getY() == 2)) {
+							if ((map.getAmpeln()[d].getX() == 3 && map.getAmpeln()[d].getY() == 2)
+									) {
 								for (int k = 0; k < map.getAutos(s).length; k++) {
 									if (map.getAutos(s)[k] != null) {
 										map.getAutos(s)[k].moveAuto(s);
@@ -92,8 +92,8 @@ public class Kreuzung {
 						s = "wo";
 						s1 = "ow";
 						for (int d = 0; d < 9; d++) {
-							if ((map.getAmpeln()[d][0].getX() == 13 && map.getAmpeln()[d][0].getY() == 2)
-									|| (map.getAmpeln()[d][1].getX() == 13 && map.getAmpeln()[d][1].getY() == 2)) {
+							if ((map.getAmpeln()[d].getX() == 13 && map.getAmpeln()[d].getY() == 2)
+									) {
 								for (int k = 0; k < map.getPassanten(s).length; k++) {
 									if (map.getPassanten(s)[k] != null) {
 										map.getPassanten(s)[k].movePassant(s);
